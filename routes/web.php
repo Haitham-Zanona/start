@@ -2,9 +2,11 @@
 
 
 use App\Http\Controllers;
+use App\Http\Controllers\CrudController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,7 @@ use Illuminate\Http\Request;
 /**
  * prefix Route
  */
-/* Route::group(['prefix' => 'sort','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'sort','middleware' => 'auth'], function () {
     //set of routes
 
     Route::get('sort', function () {
@@ -56,7 +58,7 @@ use Illuminate\Http\Request;
     Route::delete('delete', 'UserController@showUsername');
     Route::get('edit', 'UserController@showUsername');
     Route::put('update', 'UserController@showUsername');
-}); */
+});
 
 /**
 * middleware Route
@@ -126,15 +128,30 @@ route::get('/landing', function () {
 route::get('/text', function () {
     return view('welcome');
 });
+route::get('/privacy', function () {
+    return view('privacy');
+});
 route::get('/about', function () {
     return view('about');
 });
 route::get('/login', function () {
     return view('login');
 });
+route::get('/redirect/{service}', '\App\Http\Controllers\SocialController@redirect');
+route::get('/callback/{service}', '\App\Http\Controllers\SocialController@callback');
 
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') ->middleware('verified');
+
+
+Route::get('/fillable','App\Http\Controllers\CrudController@getOffers');
+
+Route::group(['prefix' => 'offers'], function () {
+    // Route::get('/store','App\Http\Controllers\CrudController@store');
+        Route::get('create', 'App\Http\Controllers\CrudController@create');
+        Route::post('store', 'App\Http\Controllers\CrudController@store')->name('offers.store');
+
+    });
 
 
