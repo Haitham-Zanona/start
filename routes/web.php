@@ -150,8 +150,24 @@ Route::get('/fillable','App\Http\Controllers\CrudController@getOffers');
 Route::group(['prefix' => 'offers'], function () {
     // Route::get('/store','App\Http\Controllers\CrudController@store');
         Route::get('create', 'App\Http\Controllers\CrudController@create');
+        Route::get('all', 'App\Http\Controllers\CrudController@getAllOffers')->name('offers.all');
         Route::post('store', 'App\Http\Controllers\CrudController@store')->name('offers.store');
+        Route::get('edit/{offer_id}', 'App\Http\Controllers\CrudController@editOffer');
+        Route::get('delete/{offer_id}', 'App\Http\Controllers\CrudController@delete')->name('offers.delete');
+        Route::post('update/{offer_id}', 'App\Http\Controllers\CrudController@updateOffer')->name('offers.update');
+
 
     });
+
+Route::get('youtube','App\Http\Controllers\CrudController@getVideo');
+
+//Begin Ajax routes
+
+Route::group(['prefix' => 'ajax-offers'], function () {
+    Route::get('create','App\Http\Controllers\OfferController@create');
+    Route::post('store','App\Http\Controllers\OfferController@store')->name('ajax.offers.store');
+});
+//End Ajax routes
+
 
 

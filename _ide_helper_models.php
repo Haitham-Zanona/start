@@ -15,18 +15,24 @@ namespace App\Models{
  * App\Models\Offer
  *
  * @property int $id
- * @property string $name
  * @property string $price
- * @property string $details
+ * @property string $photo
  * @property \Illuminate\Support\Carbon $created_at
  * @property \Illuminate\Support\Carbon $updated_at
+ * @property string $name_ar
+ * @property string $name_en
+ * @property string $details_ar
+ * @property string $details_en
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Offer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Offer query()
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Offer whereDetails($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Offer whereDetailsAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Offer whereDetailsEn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Offer whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Offer whereNameAr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Offer whereNameEn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Offer wherePhoto($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Offer whereUpdatedAt($value)
  */
@@ -67,5 +73,22 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Videos
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $viewer
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Videos whereViewer($value)
+ */
+	class Videos extends \Eloquent {}
 }
 
