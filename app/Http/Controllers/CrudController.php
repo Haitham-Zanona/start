@@ -70,7 +70,7 @@ class CrudController extends Controller
         $file_name = $this->saveImage($request -> photo, 'dist/images/offers');
 
         //insert
-        Offer::create(([
+        $offer = Offer::create(([
             'photo'=>$file_name,
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,

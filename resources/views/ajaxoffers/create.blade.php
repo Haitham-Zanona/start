@@ -13,12 +13,11 @@
         </div>
 
 
-        @if(Session::has('success'))
 
-            <div class="alert alert-success flex-center form-group" role="alert">
-                {{ Session::get('success') }}
+            <div class="alert alert-success flex-center form-group" role="alert" id="success_msg" style="display: none;">
+                {{ __('messages.Offer added successfully') }}
               </div>
-        @endif
+
        <form method="POST" id="offerForm" action="{{ url('offers\store') }}" enctype="multipart/form-data">  {{-- route(offers.store)  --}}
             @csrf
             {{-- <input name="_token" value="{{ csrf_token() }}"> --}}
@@ -161,7 +160,9 @@
                     // contentType:false,
                     // cache:false,
                     success:function(data){
-
+                        if (data.status == true) {
+                            $('#success_msg').show();
+                        }
                     },error:function(reject){
 
                     }
