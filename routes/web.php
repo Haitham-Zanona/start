@@ -171,3 +171,10 @@ Route::group(['prefix' => 'ajax-offers'], function () {
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// dd('welcome');
