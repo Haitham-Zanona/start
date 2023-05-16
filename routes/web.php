@@ -148,7 +148,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/fillable','App\Http\Controllers\CrudController@getOffers');
 
 Route::group(['prefix' => 'offers'], function () {
-    // Route::get('/store','App\Http\Controllers\CrudController@store');
+        Route::get('/store','App\Http\Controllers\CrudController@store');
         Route::get('create', 'App\Http\Controllers\CrudController@create');
         Route::get('all', 'App\Http\Controllers\CrudController@getAllOffers')->name('offers.all');
         Route::post('store', 'App\Http\Controllers\CrudController@store')->name('offers.store');
