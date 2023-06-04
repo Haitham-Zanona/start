@@ -42,6 +42,7 @@ return [
     "Describe the offer in english"=>'أكتب وصف للعرض باللغة الانجليزية',
     "Offer photo"=>'صورة العرض',
     "delete"=>'حذف',
+    "delete-Ajax"=>'حذف أجاكس',
     "offer not exist"=>'العرض غير موجود',
     "offer deleted successfully"=>'تم حذف العرض بنجاح',
 

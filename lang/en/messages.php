@@ -42,6 +42,7 @@ return [
     "Describe the offer in english"=>'Describe the offer in english',
     "Offer photo"=>'Offer photo',
     "delete"=>'delete',
+    "delete-Ajax"=>'delete-Ajax',
     "offer not exist"=>'offer not exist',
     "offer deleted successfully"=>'offer deleted successfully',
 

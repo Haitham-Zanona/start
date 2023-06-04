@@ -166,6 +166,7 @@ Route::get('youtube','App\Http\Controllers\CrudController@getVideo');
 Route::group(['prefix' => 'ajax-offers'], function () {
     Route::get('create','App\Http\Controllers\OfferController@create');
     Route::post('store','App\Http\Controllers\OfferController@store')->name('ajax.offers.store');
+    Route::get('all', 'App\Http\Controllers\CrudController@getAllOffers')->name('ajax.offers.all');
 });
 //End Ajax routes
 

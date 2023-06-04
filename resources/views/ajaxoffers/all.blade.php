@@ -23,7 +23,7 @@
                     <th scope="col">{{ __('messages.Offer Price') }}</th>
                     <th scope="col">{{ __('messages.Offer photo') }}</th>
                     <th scope="col">{{ __('messages.Offer Details')}}</th>
-                    <th scope="col" colspan="2" class="text-center">{{ __('messages.operation')}}</th>
+                    <th scope="col" colspan="3" class="text-center">{{ __('messages.operation')}}</th>
                     {{-- <th scope="col">{{ __('messages.Offer Details in arabic')}}</th>
                     <th scope="col">{{ __('messages.Offer Details in english')}}</th> --}}
                 </tr>
@@ -41,6 +41,7 @@
                             <td>{{ $offer -> details }}</td>
                             <td><a href="{{ url('offers/edit/'.$offer -> id) }}" style="padding-left:25%;"><button class="btn btn-success">{{ __('messages.edit') }}</button></a></td>
                             <td><a href="{{ url('offers/delete/'.$offer -> id) }}" style="padding-left:25%;"><button class="btn btn-danger">{{ __('messages.delete') }}</button></a></td>
+                            <td><a href="" id="delete_btn" style="padding-left:25%;"><button class="btn btn-danger">{{ __('messages.delete-Ajax') }}</button></a></td>
                             {{-- <th>{{ $offer -> details_ar }}</th>
                             <th>{{ $offer -> details_en }}</th> --}}
                         </tr>
@@ -49,3 +50,21 @@
         </table>
 
     @endsection
+
+
+    $(document).on('click', '#delete_btn', function (e)){
+        e.preventDefault();
+        $.ajax({
+            url: "{{ url('offers/delete') }}",
+            type: "post",
+            data: {
+                '_token': $('input[name=_token]').val(),
+                'id': $('#delete_btn').attr('id')
+                },
+            success: function (data) {
+                if (data.status == "success") {
+                    alert(data.message);
+                    location.reload();
+                }
+            }
+        });
